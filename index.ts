@@ -2,6 +2,7 @@ import * as express from "express";
 const cookieParser = require("cookie-parser");
 import * as cors from "cors";
 const path = require("path");
+const ftpRouts = require("./roters/ftpRouts");
 const fileUpload = require("express-fileupload");
 
 const app = express();
@@ -20,6 +21,8 @@ app.use(function (req, res, next) {
 	res.setHeader("Access-Control-Allow-Credentials", "true");
 	next();
 });
+
+app.use("/ftp", ftpRouts);
 
 app.listen(3001, "0.0.0.0", () => {
 	console.log("Listening on http://localhost:3001");
